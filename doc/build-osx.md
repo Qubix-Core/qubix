@@ -38,23 +38,23 @@ Next, follow the instructions in [build-generic](build-generic.md)
 Running
 -------
 
-Raptoreum Core is now available at `./src/raptoreumd`
+Qubix Core is now available at `./src/qubixd`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=raptoreumrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/RaptoreumCore/raptoreum.conf"
+    echo -e "rpcuser=qubixrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/QubixCore/qubix.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/RaptoreumCore/raptoreum.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/QubixCore/qubix.conf"
 
-The first time you run raptoreumd, it will start downloading the blockchain. This process could take several hours.
+The first time you run qubixd, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/RaptoreumCore/debug.log
+    tail -f $HOME/Library/Application\ Support/QubixCore/debug.log
 
 Other commands:
 -------
 
-    ./src/raptoreumd -daemon # Starts the raptoreum daemon.
-    ./src/raptoreum-cli --help # Outputs a list of command-line options.
-    ./src/raptoreum-cli help # Outputs a list of RPC commands when the daemon is running.
+    ./src/qubixd -daemon # Starts the qubix daemon.
+    ./src/qubix-cli --help # Outputs a list of command-line options.
+    ./src/qubix-cli help # Outputs a list of RPC commands when the daemon is running.

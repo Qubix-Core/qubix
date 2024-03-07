@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2020-2021 The Raptoreum developers
+// Copyright (c) 2020-2021 The Qubix developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -21,9 +21,9 @@ BitcoinUnits::BitcoinUnits(QObject *parent):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(RTM);
-    unitlist.append(mRTM);
-    unitlist.append(uRTM);
+    unitlist.append(QXB);
+    unitlist.append(mQXB);
+    unitlist.append(uQXB);
     unitlist.append(ruffs);
     return unitlist;
 }
@@ -32,9 +32,9 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case RTM:
-    case mRTM:
-    case uRTM:
+    case QXB:
+    case mQXB:
+    case uQXB:
     case ruffs:
         return true;
     default:
@@ -48,9 +48,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case RTM: return QString("RTM");
-            case mRTM: return QString("mRTM");
-            case uRTM: return QString::fromUtf8("μRTM");
+            case QXB: return QString("QXB");
+            case mQXB: return QString("mQXB");
+            case uQXB: return QString::fromUtf8("μQXB");
             case ruffs: return QString("ruffs");
             default: return QString("???");
         }
@@ -59,9 +59,9 @@ QString BitcoinUnits::name(int unit)
     {
         switch(unit)
         {
-            case RTM: return QString("tRTM");
-            case mRTM: return QString("mtRTM");
-            case uRTM: return QString::fromUtf8("μtRTM");
+            case QXB: return QString("tQXB");
+            case mQXB: return QString("mtQXB");
+            case uQXB: return QString::fromUtf8("μtQXB");
             case ruffs: return QString("truffs");
             default: return QString("???");
         }
@@ -74,10 +74,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case RTM: return QString("Raptoreum");
-            case mRTM: return QString("Milli-Raptoreum (1 / 1" THIN_SP_UTF8 "000)");
-            case uRTM: return QString("Micro-Raptoreum (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case ruffs: return QString("Ten Nano-Raptoreum (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case QXB: return QString("Qubix");
+            case mQXB: return QString("Milli-Qubix (1 / 1" THIN_SP_UTF8 "000)");
+            case uQXB: return QString("Micro-Qubix (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case ruffs: return QString("Ten Nano-Qubix (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -85,10 +85,10 @@ QString BitcoinUnits::description(int unit)
     {
         switch(unit)
         {
-            case RTM: return QString("TestRaptoreums");
-            case mRTM: return QString("Milli-TestRaptoreum (1 / 1" THIN_SP_UTF8 "000)");
-            case uRTM: return QString("Micro-TestRaptoreum (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
-            case ruffs: return QString("Ten Nano-TestRaptoreum (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case QXB: return QString("TestQubixs");
+            case mQXB: return QString("Milli-TestQubix (1 / 1" THIN_SP_UTF8 "000)");
+            case uQXB: return QString("Micro-TestQubix (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+            case ruffs: return QString("Ten Nano-TestQubix (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
             default: return QString("???");
         }
     }
@@ -98,9 +98,9 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case RTM:  return 100000000;
-    case mRTM: return 100000;
-    case uRTM: return 100;
+    case QXB:  return 100000000;
+    case mQXB: return 100000;
+    case uQXB: return 100;
     case ruffs: return 1;
     default:   return 100000000;
     }
@@ -110,9 +110,9 @@ int BitcoinUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case RTM: return 8;
-    case mRTM: return 5;
-    case uRTM: return 2;
+    case QXB: return 8;
+    case mQXB: return 5;
+    case uQXB: return 2;
     case ruffs: return 0;
     default: return 0;
     }

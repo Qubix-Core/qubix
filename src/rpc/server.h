@@ -136,7 +136,7 @@ public:
 };
 
 /**
- * Raptoreum RPC command dispatcher.
+ * Qubix RPC command dispatcher.
  */
 class CRPCTable
 {

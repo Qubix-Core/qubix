@@ -6,15 +6,15 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/raptoreum
-src/raptoreumd
-src/raptoreum-cli
-src/raptoreum-tx
-src/test/test_raptoreum
-src/test/test_raptoreum_fuzzy
-src/qt/test/test_raptoreum-qt
+src/qubix
+src/qubixd
+src/qubix-cli
+src/qubix-tx
+src/test/test_qubix
+src/test/test_qubix_fuzzy
+src/qt/test/test_qubix-qt
 src/qt/res/css/colors/*
-src/bench/bench_raptoreum
+src/bench/bench_qubix
 
 # autoreconf
 Makefile.in
@@ -37,8 +37,8 @@ config.log
 config.status
 configure
 libtool
-src/config/raptoreum-config.h
-src/config/raptoreum-config.h.in
+src/config/qubix-config.h
+src/config/qubix-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -85,14 +85,14 @@ libconftest.dylib*
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-raptoreum-qt
-Raptoreum-Qt.app
+qubix-qt
+Qubix-Qt.app
 background.tiff*
 !/depends/Makefile
 
 # Unit-tests
 Makefile.test
-raptoreum-qt_test
+qubix-qt_test
 
 # Resources cpp
 qrc_*.cpp
@@ -106,7 +106,7 @@ build
 *.gcno
 *.gcda
 /*.info
-test_raptoreum.coverage/
+test_qubix.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -124,15 +124,15 @@ test/cache/*
 .autotools
 /doc/doxygen/
 
-libraptoreumconsensus.pc
+libqubixconsensus.pc
 contrib/devtools/split-debug.sh
-src/qt/raptoreum-qt.bash
+src/qt/qubix-qt.bash
 qa/pull-tester/tests-config.sh
 
 #development symlinks
-raptoreum-cli
-raptoreumd
-raptoreum-qt
+qubix-cli
+qubixd
+qubix-qt
 make
 
 /docker/bin
@@ -149,6 +149,6 @@ dist/
 *.conf
 .settings/language.settings.xml
 
-/raptoreum.iml
+/qubix.iml
 /testnet3_binary/
 /testnet4/

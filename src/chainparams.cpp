@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2020 The Dash Core developers
-// Copyright (c) 2020-2022 The Raptoreum developers
+// Copyright (c) 2023 The Qubix developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -83,8 +83,8 @@ static CBlock CreateDevNetGenesisBlock(const uint256 &prevBlockHash, const std::
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "The Times 22/Jan/2018 Raptoreum is name of the game for new generation of firms";
-    const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
+    const char* pszTimestamp = "Bitcoin 20/05/2023 Bitcoin Mining Gets Tougher as Network Difficulty Reaches New Peak";
+    const CScript genesisOutputScript = CScript() << ParseHex("04322ca1a8cdc5c0930872ba6012e207716e5253b7db4a202d4aa86a8ba8b5fd7e15e58f6873fd58a56d508cdf069afdf0eb08c9bdcb7c042b98e16d70b59b3") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -551,35 +551,42 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_V17].nFalloffCoeff = 5; // this corresponds to 10 periods
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("000000000000000000000000000000000000000000000000000eead474ccbc59"); // block 421457 chainwork
+        consensus.nMinimumChainWork = uint256S("0x0"); // block 421457 chainwork
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("ox6fb0b649723f51b67484019409fef94d077f17c8d88645e08c000b2e4fd3e28a"); // block hash for 421457
+        consensus.defaultAssumeValid = uint256S("0x0"); // block hash for 421457
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x72;//r
-        pchMessageStart[1] = 0x74;//t
+        pchMessageStart[0] = 0x35;//r
+        pchMessageStart[1] = 0x89;//t
         pchMessageStart[2] = 0x6d;//m
         pchMessageStart[3] = 0x2e;//.
-        nDefaultPort = 10226;
+        nDefaultPort = 12256;
         nPruneAfterHeight = 100000;
-        genesis = CreateGenesisBlock(1614369600, 1130, 0x20001fff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1614369600, 1006, 0x20001fff, 4, 5000 * COIN);
         VerifyGenesisPOW(genesis);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0xb79e5df07278b9567ada8fc655ffbfa9d3f586dc38da3dd93053686f41caeea0"));
-        assert(genesis.hashMerkleRoot == uint256S("0x87a48bc22468acdd72ee540aab7c086a5bbcddc12b51c6ac925717a74c269453"));
+        assert(consensus.hashGenesisBlock == uint256S("0x32457ba443e43ec6ee805f61da8513726c69a3d4de67a5474fb642640ac8488d"));
+        assert(genesis.hashMerkleRoot == uint256S("0xf3201835c3aed5c6fd062a1a0db01d84ba83963fc9a17824614858037c2be7f3"));
 
-        vSeeds.emplace_back("lbdn.raptoreum.com");
-        vSeeds.emplace_back("51.89.21.112");
+        vSeeds.emplace_back("node.qubixchain.com");
+        vSeeds.emplace_back("node1.qubixchain.com");
+	vSeeds.emplace_back("node2.qubixchain.com");
+	vSeeds.emplace_back("node3.qubixchain.com");
+	vSeeds.emplace_back("node4.qubixchain.com");
+	vSeeds.emplace_back("node5.qubixchain.com");
+	vSeeds.emplace_back("node6.qubixchain.com");
+	vSeeds.emplace_back("node7.qubixchain.com");
+	vSeeds.emplace_back("node8.qubixchain.com");
 
         // Raptoreum addresses start with 'r'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,0);
         // Raptoreum script addresses start with '7'
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,16);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
         // Raptoreum private keys start with '7' or 'X'
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
         // Raptoreum BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
@@ -633,24 +640,21 @@ public:
         nPoolNewMaxParticipants = 20;
         nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
 
-        vSporkAddresses = {"RWGvGpd3yJdnfh9ziyHNDEoHMJBvnZ23zK"};
+        vSporkAddresses = {"1PXEk3zPqKT1bATWMiKemoWSn517cQY53h"};
         nMinSporkKeys = 1;
         fBIP9CheckSmartnodesUpgraded = true;
 
         checkpointData = {
-          {  {5145, uint256S("0x64c9cc82f05f4326e49fd4b21a48494b02b12a707de67a47c7e8e1102b0f1d9b")},
-             {35000, uint256S("0xb4fb191f3ef4141557aef8aafa700d312e5499cbde4a3079faa78cf58c0c414f")},
-             {61900, uint256S("0xc146fc6244fe4d71559f4fef16a386f1fceda6e5efa3da3ca1ebe9806cc8f25c")},
-             {394273, uint256S("0dc274a28864a01a9539e60afdbc38fcdb0f000fbc52553cd31651c97557dc04")}
+          {  {0, uint256S("0x001cd8e327b37c526398270d4a7d57f416866256fab73747b804ead1bafb5d30")}
 
           }
         };
 
         chainTxData = ChainTxData{
-            1662608883,   // * UNIX timestamp of last known number of transactions (Block 0)
-            2091922,   // * total number of transactions between genesis and that timestamp
+            1614369600,   // * UNIX timestamp of last known number of transactions (Block 0)
+            0,   // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            0.06    // * estimated number of transactions per second after that timestamp
+            0.00    // * estimated number of transactions per second after that timestamp
         };
     }
 };
@@ -721,12 +725,12 @@ public:
         pchMessageStart[3] = 0x6d; //m
         nDefaultPort = 10229;
         nPruneAfterHeight = 1000;
-        genesis = CreateGenesisBlock(1668574674, 352, 0x20001fff, 4, 5000 * COIN);
+        genesis = CreateGenesisBlock(1645942755, 184, 0x20001fff, 4, 5000 * COIN);
         VerifyGenesisPOW(genesis);
 
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x16b418c4e84599ba61836085c5b780c199f90c207f7de189cbb56803e87529eb"));
-        assert(genesis.hashMerkleRoot == uint256S("0x87a48bc22468acdd72ee540aab7c086a5bbcddc12b51c6ac925717a74c269453"));
+        assert(consensus.hashGenesisBlock == uint256S("0x7e496abd78a140bcffe2c68fa85f5f94e5268ec981eb1239b7283e37d40bc41c"));
+        assert(genesis.hashMerkleRoot == uint256S("0xf3201835c3aed5c6fd062a1a0db01d84ba83963fc9a17824614858037c2be7f3"));
 
         vFixedSeeds.clear();
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -768,7 +772,7 @@ public:
         consensus.nFutureRewardShare = Consensus::FutureRewardShare(0.8,0.2,0.0);
 
         std::vector<FounderRewardStructure> rewardStructures = {  {INT_MAX, 5}  };// 5% founder/dev fee forever
-        consensus.nFounderPayment = FounderPayment(rewardStructures, 272200, "rghjACzPtVAN2wydgDbn9Jq1agREu6rH1e");
+        consensus.nFounderPayment = FounderPayment(rewardStructures, 200, "rghjACzPtVAN2wydgDbn9Jq1agREu6rH1e");
 
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
