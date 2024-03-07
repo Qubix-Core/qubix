@@ -1,4 +1,4 @@
-Qubix Core Latest v1.3.17.03
+Qubix Core Latest v1.3.17.04
 ===========================
 
 |CI|master|[![Qubix Build](https://github.com/Qubix-Core/qubix/actions/workflows/build.yaml/badge.svg?branch=qubix-develop)](https://github.com/Qubix-Core/qubix/actions/workflows/build.yaml)|
