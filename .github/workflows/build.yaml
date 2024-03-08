@@ -65,10 +65,10 @@ jobs:
           name: version
           path: version.txt
 
-  build-ubuntu18:
-    name: Ubuntu18 build
+  build-ubuntu22:
+    name: Ubuntu22 build
     needs: checking-build-version
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -125,7 +125,7 @@ jobs:
           echo "------------------------------------" >> checksums.txt
           sha256sum * >> checksums.txt
           cat checksums.txt
-          tar -cvzf ../${COIN_NAME}-ubuntu18-${BUILD_VERSION}.tar.gz *          
+          tar -cvzf ../${COIN_NAME}-ubuntu22-${BUILD_VERSION}.tar.gz *          
           cd ../${BUILD_DIR}_debug
           echo "sha256:" >> checksums.txt
           echo "------------------------------------" >> checksums.txt
@@ -135,7 +135,7 @@ jobs:
           echo "------------------------------------" >> checksums.txt
           sha256sum * >> checksums.txt
           cat checksums.txt
-          tar -cvzf ../${COIN_NAME}-ubuntu18-debug-${BUILD_VERSION}.tar.gz *
+          tar -cvzf ../${COIN_NAME}-ubuntu22-debug-${BUILD_VERSION}.tar.gz *
           cd ../${BUILD_DIR}_not_strip
           echo "sha256:" >> checksums.txt
           echo "------------------------------------" >> checksums.txt
@@ -145,22 +145,22 @@ jobs:
           echo "------------------------------------" >> checksums.txt
           sha256sum * >> checksums.txt
           cat checksums.txt
-          tar -cvzf ../${COIN_NAME}-ubuntu18-not_strip-${BUILD_VERSION}.tar.gz *
+          tar -cvzf ../${COIN_NAME}-ubuntu22-not_strip-${BUILD_VERSION}.tar.gz *
           cd ..
           mv *.tar.gz ${COMPRESS_DIR}/
           cd ${COMPRESS_DIR}
-          echo "sha256: `shasum ${COIN_NAME}-ubuntu18-${BUILD_VERSION}.tar.gz`" >> checksums.txt
-          echo "openssl-sha256: `sha256sum ${COIN_NAME}-ubuntu18-${BUILD_VERSION}.tar.gz`" >> checksums.txt
-          echo "sha256: `shasum ${COIN_NAME}-ubuntu18-debug-${BUILD_VERSION}.tar.gz`" >> checksums.txt
-          echo "openssl-sha256: `sha256sum ${COIN_NAME}-ubuntu18-debug-${BUILD_VERSION}.tar.gz`" >> checksums.txt
-          echo "sha256: `shasum ${COIN_NAME}-ubuntu18-not_strip-${BUILD_VERSION}.tar.gz`" >> checksums.txt
-          echo "openssl-sha256: `sha256sum ${COIN_NAME}-ubuntu18-not_strip-${BUILD_VERSION}.tar.gz`" >> checksums.txt
+          echo "sha256: `shasum ${COIN_NAME}-ubuntu22-${BUILD_VERSION}.tar.gz`" >> checksums.txt
+          echo "openssl-sha256: `sha256sum ${COIN_NAME}-ubuntu22-${BUILD_VERSION}.tar.gz`" >> checksums.txt
+          echo "sha256: `shasum ${COIN_NAME}-ubuntu22-debug-${BUILD_VERSION}.tar.gz`" >> checksums.txt
+          echo "openssl-sha256: `sha256sum ${COIN_NAME}-ubuntu22-debug-${BUILD_VERSION}.tar.gz`" >> checksums.txt
+          echo "sha256: `shasum ${COIN_NAME}-ubuntu22-not_strip-${BUILD_VERSION}.tar.gz`" >> checksums.txt
+          echo "openssl-sha256: `sha256sum ${COIN_NAME}-ubuntu22-not_strip-${BUILD_VERSION}.tar.gz`" >> checksums.txt
           cd ..
           cat ${COMPRESS_DIR}/checksums.txt
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.COIN_NAME }}-ubuntu18-${{ env.BUILD_VERSION }}
+          name: ${{ env.COIN_NAME }}-ubuntu22-${{ env.BUILD_VERSION }}
           path: ${{ env.COMPRESS_DIR }}
   build-ubuntu20:
     name: Ubuntu20 build
@@ -346,7 +346,7 @@ jobs:
   build-arm-32:
     name: arm 32 bit build
     needs: checking-build-version
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -424,7 +424,7 @@ jobs:
   build-arm-64:
     name: arm 64 bit build
     needs: checking-build-version
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
