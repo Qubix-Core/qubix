@@ -551,10 +551,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_V17].nFalloffCoeff = 5; // this corresponds to 10 periods
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0"); // block 421457 chainwork
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000014e174159db"); // block 3532 chainwork
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x0"); // block hash for 421457
+        consensus.defaultAssumeValid = uint256S("0xafb89edfc5d1b39088b89409522c9ad3d924220782984092e467df2984483936"); // block hash for 3532
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -645,14 +645,15 @@ public:
         fBIP9CheckSmartnodesUpgraded = true;
 
         checkpointData = {
-          {  {0, uint256S("0x001cd8e327b37c526398270d4a7d57f416866256fab73747b804ead1bafb5d30")}
-
+          {     {0, uint256S("0x001cd8e327b37c526398270d4a7d57f416866256fab73747b804ead1bafb5d30")},
+                {9, uint256S("0x3acdcb87294440ed315821db80bc5329b5bebcc1370b91a0c374d272a4210586")},
+                {3532, uint256S("0xafb89edfc5d1b39088b89409522c9ad3d924220782984092e467df2984483936")}
           }
         };
 
         chainTxData = ChainTxData{
-            1614369600,   // * UNIX timestamp of last known number of transactions (Block 0)
-            0,   // * total number of transactions between genesis and that timestamp
+            1710210173,   // * UNIX timestamp of last known number of transactions (Block 0)
+            1,   // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
             0.00    // * estimated number of transactions per second after that timestamp
         };
